@@ -1,25 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
-
-function App() {
+import { UserList } from './components/userList';
+import { OrderList } from './components/orderList';
+import { useState } from 'react';
+const App=()=> {
+  const[display,setDisplay]=useState(0);
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <div className='container'>
+          <button className='button' onClick={()=>setDisplay(1)}>Utenti</button>
+          <button className='button' onClick={()=>setDisplay(2)}>Commesse</button>
+        </div>
+        { display==1 && (<UserList/>) }
+        { display==2 && (<OrderList/>) }
       </header>
     </div>
   );
 }
 
+
 export default App;
+
